@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: minha-api
+  namespace: estudos
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: minha-api
+
+  template:
+    metadata:
+      labels:
+        app: minha-api
+
+    spec:
+      containers:
+        - name: minha-api
+          image: minha-api:v1
+          imagePullPolicy: Never
+
+          ports:
+            - containerPort: 8000
